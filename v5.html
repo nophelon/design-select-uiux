@@ -1,0 +1,170 @@
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E안 · 몰입 카드 — 디자인 고르기</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;
+  --bg:#f5f4fa;--panel:#ffffff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;
+  --ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee;
+  --shadow:0 1px 2px rgba(23,20,41,.04),0 8px 24px -14px rgba(23,20,41,.18);
+  --shadow-lg:0 2px 6px rgba(23,20,41,.06),0 24px 60px -24px rgba(23,20,41,.32);
+  --radius:16px;--topH:56px;
+}
+@media(prefers-color-scheme:dark){:root{
+  --accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;
+  --bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;
+  --ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 28px 70px -24px rgba(0,0,0,.75);
+}}
+:root[data-theme=light]{--accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;--bg:#f5f4fa;--panel:#fff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;--ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee}
+:root[data-theme=dark]{--accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;--bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;--ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+/* app chrome */
+.chrome{position:sticky;top:0;z-index:30;height:var(--topH);display:flex;align-items:center;gap:12px;padding:0 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+.chrome .logo{font-weight:800;font-size:15px;letter-spacing:-.03em;display:flex;align-items:center;gap:7px}
+.chrome .logo b{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--accent),#b06bff);display:grid;place-items:center;color:#fff;font-size:13px}
+.chrome .sp{flex:1}
+.chrome .u{width:30px;height:30px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.step{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--accent-soft-ink);background:var(--accent-soft);padding:5px 11px;border-radius:999px}
+.hgroup h1{font-size:clamp(23px,3.4vw,30px);font-weight:800;letter-spacing:-.035em;margin:14px 0 8px;text-wrap:balance}
+.hgroup .lede{color:var(--ink2);font-size:15px;max-width:60ch}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);font-size:13.5px;font-weight:600;padding:8px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.back:hover{background:var(--panel2)}
+.note{display:flex;gap:9px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink2);font-size:13px;line-height:1.6}
+.note b{color:var(--ink)}
+.chip{font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.chip.rec{color:var(--accent-ink);background:var(--accent)}
+.chip.ok{color:var(--ok);background:var(--okbg)}
+.chip.ind{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:13.5px;border-radius:11px;padding:10px 15px;transition:.14s}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 18px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
+.btn.pri:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.sec{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn.sec:hover{background:var(--panel2);border-color:var(--accent)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);margin-top:34px;padding:20px 0 48px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:var(--shadow-lg)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.vnav{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:var(--shadow-lg)}
+.vnav a{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--muted)}
+.vnav a.on{background:var(--accent);color:var(--accent-ink)}
+.vnav a.home{color:var(--ink2)}
+@media(max-width:640px){.wrap{padding:0 15px}.foot{padding-bottom:40px}}
+
+.e-wrap{padding-top:22px}
+.e-h{font-size:17px;font-weight:800;letter-spacing:-.03em;margin:26px 0 14px;display:flex;align-items:baseline;gap:10px}
+.e-h span{font-size:12.5px;color:var(--muted);font-weight:500}
+.e-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.e-grid.one{grid-template-columns:1fr}
+.e-grid.one .e-card{aspect-ratio:24/8}
+.e-grid.one .body h3{font-size:20px}
+@media(max-width:520px){.e-grid.one .e-card{aspect-ratio:4/3}}
+.e-card{position:relative;border-radius:18px;overflow:hidden;background:#0c0a16;box-shadow:var(--shadow);transition:.2s;aspect-ratio:3/4;cursor:pointer;border:1px solid var(--line)}
+.e-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.e-card .bg{position:absolute;inset:0}
+.e-card .bg img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:.5s}
+.e-card:hover .bg img{transform:scale(1.05)}
+.e-card .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,16,.92) 8%,rgba(8,6,16,.35) 42%,rgba(8,6,16,.05) 68%)}
+.e-card .top{position:absolute;top:13px;left:13px;right:13px;display:flex;justify-content:space-between;gap:8px}
+.e-card .body{position:absolute;left:0;right:0;bottom:0;padding:18px 17px;color:#fff}
+.e-card .body h3{font-size:16.5px;font-weight:800;letter-spacing:-.02em;text-shadow:0 1px 10px rgba(0,0,0,.4)}
+.e-card .body .mt{font-size:12px;color:rgba(255,255,255,.78);margin-top:5px}
+.e-card .acts{display:flex;gap:8px;margin-top:13px;opacity:0;transform:translateY(8px);transition:.2s}
+.e-card:hover .acts{opacity:1;transform:none}
+.e-card .acts .btn{flex:1;padding:9px;font-size:12.5px}
+.e-card .acts .glass{background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(6px)}
+.e-card .acts .glass:hover{background:rgba(255,255,255,.26)}
+@media(hover:none){.e-card .acts{opacity:1;transform:none}}
+@media(max-width:860px){.e-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.e-grid{grid-template-columns:1fr}.e-card{aspect-ratio:4/3}}
+</style></head><body>
+<header class="chrome"><span class="logo"><b>N</b>사이트 만들기</span><span class="sp"></span><span class="u">양</span></header>
+<main class="wrap e-wrap">
+
+<div class="step">5단계 · 디자인 고르기</div>
+<div class="hgroup"><h1>어떤 디자인으로 만들까요?</h1>
+<p class="lede">양리건님 업종에 어울리는 디자인을 먼저 보여드렸어요. 마음에 드는 걸 고르면 그 디자인 그대로 모든 페이지를 만들어 드려요.</p></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 18px"><a class="back" href="#">← 메뉴 구성 다시 하기</a></div>
+
+<div class="e-h">추천 디자인</div><div class="e-grid one"><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/07ed696c30f4.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span class="chip rec">★ 추천</span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">교육·학원</span></div>
+<div class="body"><h3>홍익대학교 산업디자인학과</h3><div class="mt">구성 29개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="홍익대학교 산업디자인학과">만들기</button></div></div>
+</article></div>
+<div class="e-h">전체 디자인 <span>11개</span></div><div class="e-grid"><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/af95398de2a3.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">교육·학원</span></div>
+<div class="body"><h3>로보토리에듀</h3><div class="mt">구성 92개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="로보토리에듀">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/796d63e92246.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">제조·기업(B2B)</span></div>
+<div class="body"><h3>카운터포인트리서치</h3><div class="mt">구성 89개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="카운터포인트리서치">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/8527de9d7d68.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">식품·쇼핑·서비스</span></div>
+<div class="body"><h3>서오릉피자</h3><div class="mt">구성 35개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="서오릉피자">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/da97c95f37f7.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">식품·쇼핑·서비스</span></div>
+<div class="body"><h3>노블레스닷컴</h3><div class="mt">구성 32개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="노블레스닷컴">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/9a0e2fbf0de2.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">제조·기업(B2B)</span></div>
+<div class="body"><h3>루미네어IR</h3><div class="mt">구성 29개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="루미네어IR">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/29f843d2a360.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">병원·뷰티·웰니스</span></div>
+<div class="body"><h3>DAY ONE DREAM</h3><div class="mt">구성 22개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="DAY ONE DREAM">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/82ed976cf6a1.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">제조·기업(B2B)</span></div>
+<div class="body"><h3>HD현대M&S</h3><div class="mt">구성 20개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="HD현대M&S">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/16044163d3aa.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">식품·쇼핑·서비스</span></div>
+<div class="body"><h3>코오롱워크웨어</h3><div class="mt">구성 17개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="코오롱워크웨어">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/2ba43e54577f.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">제조·기업(B2B)</span></div>
+<div class="body"><h3>CJ채용</h3><div class="mt">구성 7개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="CJ채용">만들기</button></div></div>
+</article><article class="e-card">
+<div class="bg"><img class="" src="https://assets.nophelon.com/template-preview/thumbs/c400e7db220f.webp" alt="" loading="lazy" decoding="async"></div><div class="scrim"></div>
+<div class="top"><span></span><span class="chip" style="background:rgba(255,255,255,.18);color:#fff">식품·쇼핑·서비스</span></div>
+<div class="body"><h3>나이스지키미</h3><div class="mt">구성 3개 · 지금 만들 수 있어요</div>
+<div class="acts"><button class="btn glass" data-act="prev">미리 보기</button><button class="btn pri" data-act="pick" data-name="나이스지키미">만들기</button></div></div>
+</article></div>
+<div class="foot"><a class="back" href="#">← 이전</a><button class="btn pri" data-act="pick" data-name="홍익대학교 산업디자인학과">다음 →</button></div></main>
+<div class="toast" id="toast"></div>
+<nav class="vnav">
+<a class="home" href="index.html" title="목록">☰</a>
+<a class="" href="v1.html" title="A안">A</a><a class="" href="v2.html" title="B안">B</a><a class="" href="v3.html" title="C안">C</a><a class="" href="v4.html" title="D안">D</a><a class="on" href="v5.html" title="E안">E</a>
+</nav>
+<script>
+const t=document.getElementById('toast');let tt;
+function toast(m){t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),1900)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;e.preventDefault();
+ const a=b.dataset.act,n=b.dataset.name||'';
+ if(a==='pick')toast('"'+n+'" 선택 — 실제 화면에선 다음 단계(색·사진)로 넘어가요');
+ if(a==='prev')toast('실제 화면에선 미리보기가 열려요');
+});
+
+</script>
+</body></html>

@@ -1,0 +1,84 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>디자인 고르기 화면 — UI/UX 5안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;
+  --bg:#f5f4fa;--panel:#ffffff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;
+  --ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee;
+  --shadow:0 1px 2px rgba(23,20,41,.04),0 8px 24px -14px rgba(23,20,41,.18);
+  --shadow-lg:0 2px 6px rgba(23,20,41,.06),0 24px 60px -24px rgba(23,20,41,.32);
+  --radius:16px;--topH:56px;
+}
+@media(prefers-color-scheme:dark){:root{
+  --accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;
+  --bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;
+  --ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 28px 70px -24px rgba(0,0,0,.75);
+}}
+:root[data-theme=light]{--accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;--bg:#f5f4fa;--panel:#fff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;--ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee}
+:root[data-theme=dark]{--accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;--bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;--ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+/* app chrome */
+.chrome{position:sticky;top:0;z-index:30;height:var(--topH);display:flex;align-items:center;gap:12px;padding:0 20px;background:var(--panel);border-bottom:1px solid var(--line)}
+.chrome .logo{font-weight:800;font-size:15px;letter-spacing:-.03em;display:flex;align-items:center;gap:7px}
+.chrome .logo b{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--accent),#b06bff);display:grid;place-items:center;color:#fff;font-size:13px}
+.chrome .sp{flex:1}
+.chrome .u{width:30px;height:30px;border-radius:50%;background:var(--panel2);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.step{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--accent-soft-ink);background:var(--accent-soft);padding:5px 11px;border-radius:999px}
+.hgroup h1{font-size:clamp(23px,3.4vw,30px);font-weight:800;letter-spacing:-.035em;margin:14px 0 8px;text-wrap:balance}
+.hgroup .lede{color:var(--ink2);font-size:15px;max-width:60ch}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--ink2);font-size:13.5px;font-weight:600;padding:8px 13px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.back:hover{background:var(--panel2)}
+.note{display:flex;gap:9px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink2);font-size:13px;line-height:1.6}
+.note b{color:var(--ink)}
+.chip{font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.chip.rec{color:var(--accent-ink);background:var(--accent)}
+.chip.ok{color:var(--ok);background:var(--okbg)}
+.chip.ind{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:13.5px;border-radius:11px;padding:10px 15px;transition:.14s}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 18px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
+.btn.pri:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.sec{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn.sec:hover{background:var(--panel2);border-color:var(--accent)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);margin-top:34px;padding:20px 0 48px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:var(--shadow-lg)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.vnav{position:fixed;right:16px;bottom:16px;z-index:50;display:flex;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:var(--shadow-lg)}
+.vnav a{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--muted)}
+.vnav a.on{background:var(--accent);color:var(--accent-ink)}
+.vnav a.home{color:var(--ink2)}
+@media(max-width:640px){.wrap{padding:0 15px}.foot{padding-bottom:40px}}
+
+.ix{max-width:1000px;margin:0 auto;padding:46px 22px 70px}
+.ix h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.04em;text-wrap:balance}
+.ix .sub{color:var(--ink2);font-size:15.5px;margin-top:12px;max-width:62ch;line-height:1.7}
+.ix .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+.ix .o{display:block;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);box-shadow:var(--shadow);transition:.18s}
+.ix .o:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.ix .o .pv{aspect-ratio:16/9;background:var(--panel2);overflow:hidden;border-bottom:1px solid var(--line);position:relative}
+.ix .o .pv img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ix .o .pv .k{position:absolute;top:12px;left:12px;width:34px;height:34px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:16px;box-shadow:var(--shadow)}
+.ix .o .t{padding:16px 18px}
+.ix .o .t h3{font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+.ix .o .t p{color:var(--ink2);font-size:13.5px;margin-top:7px;line-height:1.6}
+.ix .foot2{margin-top:32px;color:var(--muted);font-size:13px;line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+@media(max-width:680px){.ix .grid{grid-template-columns:1fr}}
+</style></head><body>
+<header class="chrome"><span class="logo"><b>N</b>사이트 만들기</span><span class="sp"></span><span class="u">양</span></header>
+<main class="ix">
+<div class="step">디자인 고르기 화면 · UI/UX 탐색</div>
+<h1 style="margin-top:14px">디자인 고르기 화면, 5가지로 만들어 봤어요</h1>
+<p class="sub">지금 쓰는 화면이 밋밋해서, 레이아웃을 5가지 방향으로 다르게 그려봤어요. 모두 <b>실제 디자인 11개의 진짜 썸네일</b>로 채워서 실제 느낌 그대로예요. 하나씩 눌러보고 마음에 드는 번호를 알려주시면 그 방향으로 실제 화면에 적용할게요.</p>
+<div class="grid">
+<a class="o" href="v1.html"><div class="pv"><span class="k">A</span><img src="https://assets.nophelon.com/template-preview/thumbs/07ed696c30f4.webp" alt=""></div><div class="t"><h3>A안 · 큰 갤러리</h3><p>썸네일을 크게 2열로. 마우스를 올리면 버튼이 사진 위로 떠요. 잡지처럼 디자인이 주인공.</p></div></a><a class="o" href="v2.html"><div class="pv"><span class="k">B</span><img src="https://assets.nophelon.com/template-preview/thumbs/af95398de2a3.webp" alt=""></div><div class="t"><h3>B안 · 비교 리스트</h3><p>가로 줄 형태. 사진+이름+설명+버튼이 한 줄에. 여러 개를 쭉 비교하기 좋아요.</p></div></a><a class="o" href="v3.html"><div class="pv"><span class="k">C</span><img src="https://assets.nophelon.com/template-preview/thumbs/796d63e92246.webp" alt=""></div><div class="t"><h3>C안 · 스플릿 브라우저</h3><p>왼쪽 목록을 누르면 오른쪽 큰 화면이 바뀌어요. 테마 고르는 느낌으로 몰입감 있게.</p></div></a><a class="o" href="v4.html"><div class="pv"><span class="k">D</span><img src="https://assets.nophelon.com/template-preview/thumbs/8527de9d7d68.webp" alt=""></div><div class="t"><h3>D안 · 추천 히어로</h3><p>추천 1개를 크게 위에 띄우고, 아래는 업종 필터가 있는 3열 그리드.</p></div></a><a class="o" href="v5.html"><div class="pv"><span class="k">E</span><img src="https://assets.nophelon.com/template-preview/thumbs/da97c95f37f7.webp" alt=""></div><div class="t"><h3>E안 · 몰입 카드</h3><p>세로로 긴 카드에 사진이 꽉 차고 이름이 사진 위에. 요즘 SaaS 마켓 느낌.</p></div></a>
+</div>
+<p class="foot2">· 버튼(미리 보기·만들기)은 느낌만 보는 용도라 눌러도 안내 문구만 떠요.<br>· 오른쪽 아래 <b>A~E</b> 버튼으로 화면끼리 바로 넘겨볼 수 있어요.<br>· 밝은/어두운 모드는 기기 설정을 따라가요.</p>
+</main></body></html>
