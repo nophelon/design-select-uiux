@@ -6,22 +6,22 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;
-  --bg:#f5f4fa;--panel:#ffffff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;
+  --accent:#8f48f3;--accent-hover:#7a2fe0;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;
+  --bg:#ffffff;--panel:#ffffff;--panel2:#f8f7fc;--line:#e8e6f1;--line2:#f0eef7;
   --ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee;
   --shadow:0 1px 2px rgba(23,20,41,.04),0 8px 24px -14px rgba(23,20,41,.18);
   --shadow-lg:0 2px 6px rgba(23,20,41,.06),0 24px 60px -24px rgba(23,20,41,.32);
   --radius:16px;--topH:56px;
 }
 @media(prefers-color-scheme:dark){:root{
-  --accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;
+  --accent:#a472f5;--accent-hover:#bfa0f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;
   --bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;
   --ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6);
   --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 28px 70px -24px rgba(0,0,0,.75);
 }}
-:root[data-theme=light]{--accent:#6d3bf5;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;--bg:#f5f4fa;--panel:#fff;--panel2:#faf9fe;--line:#e8e6f1;--line2:#f0eef7;--ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee}
-:root[data-theme=dark]{--accent:#9a73f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;--bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;--ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f}
+:root[data-theme=light]{--accent:#8f48f3;--accent-hover:#7a2fe0;--accent-ink:#fff;--accent-soft:#efe9ff;--accent-soft-ink:#5a28c2;--bg:#ffffff;--panel:#fff;--panel2:#f8f7fc;--line:#e8e6f1;--line2:#f0eef7;--ink:#171429;--ink2:#514e68;--muted:#8b88a3;--ok:#0f9d58;--okbg:#e7f6ee}
+:root[data-theme=dark]{--accent:#a472f5;--accent-hover:#bfa0f7;--accent-ink:#161228;--accent-soft:#2a2150;--accent-soft-ink:#cdbcfb;--bg:#0e0d16;--panel:#17151f;--panel2:#1d1b27;--line:#2a2838;--line2:#211f2c;--ink:#f0eff7;--ink2:#c2bfd6;--muted:#8d8ba6;--ok:#54d08a;--okbg:#14301f}
 html{-webkit-text-size-adjust:100%}
 body{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
 img{max-width:100%;display:block}
@@ -91,11 +91,14 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .f-side{position:sticky;top:76px;display:flex;flex-direction:column;gap:4px}
 .f-cat{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:11px 13px;border-radius:12px;font-weight:700;font-size:14px;color:var(--ink2);border:1px solid transparent;transition:.12s}
 .f-cat:hover{background:var(--panel2)}
-.f-cat.on{background:var(--accent-soft);color:var(--accent-soft-ink);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+/* 활성 버튼 = 앱 좌측 네비 활성(.p4-dashboard .appnav .ni.on)과 동일 — 보라 그라데이션+흰 글자+그림자 */
+.f-cat.on{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(143,72,243,.28);font-weight:700}
 .f-cat .dot{width:9px;height:9px;border-radius:3px;flex:0 0 auto}
+.f-cat.on .dot{box-shadow:0 0 0 2px rgba(255,255,255,.55)}
 .f-cat .star{color:var(--accent);font-size:13px}
+.f-cat.on .star{color:#fff}
 .f-cat em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;color:var(--muted);background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:1px 8px;min-width:24px;text-align:center}
-.f-cat.on em{color:var(--accent-soft-ink);background:color-mix(in srgb,var(--accent) 16%,transparent);border-color:transparent}
+.f-cat.on em{color:#fff;background:rgba(255,255,255,.22);border-color:transparent}
 .f-divh{font-size:11px;font-weight:800;letter-spacing:.04em;color:var(--muted);padding:14px 13px 6px}
 .f-main .f-top{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
 .f-main .f-top h2{font-size:18px;font-weight:800;letter-spacing:-.03em}
