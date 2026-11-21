@@ -116,32 +116,32 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
 .e-card .e-con .more{background:rgba(255,255,255,.1)}
 .f-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .f-empty{display:none;padding:50px 20px;text-align:center;color:var(--muted);font-size:14px}
-/* 디자인 미리보기 모달 — 가운데 뜨는 프레임(헤더=미리보기 바로 위) + 데스크탑/모바일 토글 */
-.pv-modal{position:fixed;inset:0;z-index:90;background:rgba(10,8,18,.88);display:none;align-items:center;justify-content:center;padding:26px}
+/* 디자인 미리보기 모달 — 투명 헤더(어두운 오버레이 위) + 라운딩된 미리보기 + 오버레이 우상단 큰 닫기 */
+.pv-modal{position:fixed;inset:0;z-index:90;background:rgba(10,8,18,.9);display:none;align-items:center;justify-content:center;padding:26px}
 .pv-modal.on{display:flex}
-.pv-frame{display:flex;flex-direction:column;width:min(1120px,96vw);max-height:92vh;background:var(--panel);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg)}
-.pv-bar{position:relative;flex:0 0 auto;min-height:66px;display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--line)}
+.pv-close-top{position:absolute;top:16px;right:18px;z-index:3;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.1);transition:.14s}
+.pv-close-top:hover{background:rgba(255,255,255,.22)}
+.pv-close-top svg{width:26px;height:26px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.pv-frame{display:flex;flex-direction:column;width:min(1120px,96vw);max-height:92vh;gap:12px}
+.pv-bar{position:relative;flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:2px 2px 2px}
 .pv-meta{flex:1;min-width:0}
-.pv-title{display:block;font-size:15.5px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-title{display:block;font-size:15.5px;font-weight:800;letter-spacing:-.02em;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pv-sub{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap}
 .pv-cat{font-size:11px;font-weight:700;color:#fff;border-radius:999px;padding:2px 9px;white-space:nowrap}
 .pv-cons{display:flex;gap:5px;flex-wrap:wrap}
-.pv-cons span{font-size:11px;font-weight:600;color:var(--ink2);background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
-.pv-tog{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:3px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:3px}
-.pv-dev{width:40px;height:30px;border-radius:7px;display:grid;place-items:center;color:var(--muted);transition:.12s}
-.pv-dev.on{background:var(--panel);color:var(--accent);box-shadow:var(--shadow)}
+.pv-cons span{font-size:11px;font-weight:600;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:2px 8px}
+.pv-tog{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:3px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:3px}
+.pv-dev{width:40px;height:30px;border-radius:7px;display:grid;place-items:center;color:rgba(255,255,255,.72);transition:.12s}
+.pv-dev.on{background:#fff;color:var(--accent)}
 .pv-dev svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .pv-actions{flex:0 0 auto;display:flex;align-items:center;gap:8px}
 .pv-actions .btn.pri{padding:9px 15px;font-size:13px}
-.pv-x{flex:0 0 auto;width:36px;height:36px;border-radius:9px;display:grid;place-items:center;color:var(--ink2)}
-.pv-x:hover{background:var(--panel2)}
-.pv-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round}
-.pv-body{flex:1;min-height:0;display:grid;place-items:center;overflow:auto;background:var(--panel2)}
-.pv-screen{background:#fff;overflow:hidden;transition:width .28s,aspect-ratio .28s,border-radius .28s}
+.pv-body{flex:1;min-height:0;display:grid;place-items:center;overflow:auto}
+.pv-screen{background:#fff;overflow:hidden;box-shadow:var(--shadow-lg);transition:width .28s,aspect-ratio .28s,border-radius .28s}
 .pv-body.desktop{padding:0}
-.pv-body.desktop .pv-screen{width:100%;aspect-ratio:16/10;border-radius:0}
-.pv-body.mobile{padding:22px}
-.pv-body.mobile .pv-screen{width:328px;max-width:88%;aspect-ratio:320/660;border-radius:30px;border:9px solid #0d0d12;background:#0d0d12;box-shadow:var(--shadow-lg)}
+.pv-body.desktop .pv-screen{width:100%;aspect-ratio:16/10;border-radius:16px}
+.pv-body.mobile{padding:14px 0}
+.pv-body.mobile .pv-screen{width:328px;max-width:88%;aspect-ratio:320/660;border-radius:30px;border:9px solid #0d0d12;background:#0d0d12}
 .pv-screen img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 @media(max-width:760px){.pv-cons{display:none}.pv-tog{position:static;transform:none}.pv-bar{gap:10px}.pv-actions .btn.pri{padding:8px 12px;font-size:12.5px}}
 @media(max-width:900px){.f-grid{grid-template-columns:repeat(2,1fr)}}
@@ -255,6 +255,7 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
  </section>
 </div><div class="foot"><a class="back" href="#">← 이전</a><button class="btn pri" data-act="pick" data-name="홍익대학교 산업디자인학과">다음 →</button></div>
 <div class="pv-modal" id="pvModal" role="dialog" aria-modal="true" aria-label="디자인 미리 보기">
+ <button class="pv-close-top" id="pvClose" aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
  <div class="pv-frame">
   <div class="pv-bar">
    <div class="pv-meta">
@@ -267,7 +268,6 @@ button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
    </div>
    <div class="pv-actions">
     <button class="btn pri" id="pvPick" data-act="pick">이 디자인으로 만들기</button>
-    <button class="pv-x" id="pvClose" aria-label="닫기"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
    </div>
   </div>
   <div class="pv-body desktop" id="pvStage"><div class="pv-screen"><img id="pvImg" alt=""></div></div>
